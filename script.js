@@ -15,6 +15,38 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
+// Theme toggle and persistence
+const root = document.documentElement;
+const themeToggle = document.getElementById('theme-toggle');
+
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        root.setAttribute('data-theme', 'dark');
+        if (themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    } else {
+        root.removeAttribute('data-theme');
+        if (themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    }
+}
+
+function initTheme() {
+    const stored = localStorage.getItem('hdf-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = stored || (prefersDark ? 'dark' : 'light');
+    applyTheme(theme);
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const isDark = root.getAttribute('data-theme') === 'dark';
+        const next = isDark ? 'light' : 'dark';
+        localStorage.setItem('hdf-theme', next);
+        applyTheme(next);
+    });
+}
+
+initTheme();
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -33,10 +65,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+        navbar.style.background = 'rgba(255, 255, 255, 0.9)';
         navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.background = 'rgba(255, 255, 255, 0.75)';
         navbar.style.boxShadow = 'none';
     }
 });
@@ -57,7 +89,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.service-card, .process-step, .portfolio-item, .stat-item');
+    const animateElements = document.querySelectorAll('.service-card, .process-step, .portfolio-item, .stat-item, .tool-card');
     animateElements.forEach(el => {
         observer.observe(el);
     });
