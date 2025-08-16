@@ -1,168 +1,308 @@
-# HDF Media Production Platform
+# HDFrames Productions Website
 
-A modern, sleek, and minimalistic media production platform built with HTML, CSS, and JavaScript. Features a beautiful glass-morphism design with your brand colors (blue to purple gradient) and responsive layout.
+A premium, dark-themed marketing and portfolio website for HDFrames Productions, built with Next.js 14, TypeScript, and Tailwind CSS. Features glassmorphism design, broadcast-standard quality showcases, and comprehensive business solutions.
 
-## 🎨 Features
+## 🚀 Features
 
-### Design & UI
-- **Glass Morphism Effects**: Subtle glass effects with backdrop blur and transparency
-- **Brand Colors**: Blue to purple gradient matching your HDF logo
-- **Modern Typography**: Clean Inter font with proper hierarchy
-- **Responsive Design**: Optimized for desktop, tablet, and mobile
-- **Smooth Animations**: Micro-interactions and hover effects
-- **Soft Shadows**: Elegant shadow system for depth
-
-### Functionality
-- **YouTube Video Integration**: Embed YouTube videos in portfolio section
-- **Contact Form**: Functional contact form with validation
-- **Mobile Navigation**: Hamburger menu for mobile devices
-- **Smooth Scrolling**: Seamless navigation between sections
-- **Statistics Animation**: Animated counters for statistics
-- **Scroll to Top**: Convenient back-to-top button
-
-### Sections
-1. **Hero Section**: Eye-catching introduction with call-to-action
-2. **Services**: Four main service categories with detailed descriptions
-3. **Process**: Four-step workflow visualization
-4. **Portfolio**: YouTube video showcase with tags
-5. **Contact**: Contact form and information
-6. **Footer**: Links and social media
-
-## 🚀 Quick Start
-
-1. **Download/Clone** the project files
-2. **Open** `index.html` in your web browser
-3. **Customize** the content and styling as needed
-
-## 📁 File Structure
-
-```
-├── index.html          # Main HTML structure
-├── styles.css          # All styling and responsive design
-├── script.js           # Interactive functionality
-└── README.md           # This file
-```
-
-## 🎯 Customization Guide
-
-### Changing Brand Colors
-
-The color scheme is defined in CSS variables at the top of `styles.css`:
-
-```css
-:root {
-    --primary-blue: #1e3a8a;
-    --primary-purple: #7c3aed;
-    --gradient-start: #1e3a8a;
-    --gradient-end: #7c3aed;
-    /* ... other variables */
-}
-```
-
-### Adding YouTube Videos
-
-Replace the placeholder YouTube URLs in the portfolio section:
-
-```html
-<iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-```
-
-### Updating Content
-
-1. **Services**: Modify the service cards in the services section
-2. **Portfolio**: Add your actual video projects with YouTube links
-3. **Contact**: Update contact information and form handling
-4. **Statistics**: Adjust the numbers in the "Do You Know" section
-
-### Adding New Sections
-
-1. Create a new section in `index.html`
-2. Add corresponding styles in `styles.css`
-3. Include any JavaScript functionality in `script.js`
+- **Modern Tech Stack**: Next.js 14 (App Router), TypeScript, Tailwind CSS
+- **Dark Theme**: Premium glassmorphism design with subtle animations
+- **Responsive Design**: Mobile-first approach with tablet and desktop optimization
+- **SEO Optimized**: Meta tags, sitemap, robots.txt, and structured data
+- **Accessibility**: WCAG AA compliant with keyboard navigation and screen reader support
+- **Performance**: Optimized images, fonts, and code splitting
+- **Contact Forms**: Professional inquiry forms with validation
+- **Component Library**: Reusable UI components with design system
 
 ## 🎨 Design System
 
 ### Color Palette
-- **Primary Gradient**: Blue (#1e3a8a) to Purple (#7c3aed)
-- **Neutral Grays**: 50-900 scale for text and backgrounds
-- **Accent Colors**: Orange (#f97316) and Red (#ef4444)
+The design uses a sophisticated dark theme with brand colors derived from the HDFrames logo:
+
+```css
+/* Primary Brand Colors (Purple-Blue) */
+--primary: 258 86% 65%
+--primary-600: 258 86% 55%
+--primary-700: 258 86% 45%
+
+/* Accent Colors (Magenta-Purple) */
+--accent: 288 84% 60%
+--accent-600: 288 84% 50%
+
+/* Surface Colors for Glassmorphism */
+--background: 215 28% 5%
+--surface: 215 25% 8%
+--surface-2: 215 20% 12%
+```
 
 ### Typography
-- **Font Family**: Inter (Google Fonts)
-- **Font Weights**: 300, 400, 500, 600, 700
-- **Size Scale**: xs, sm, base, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl
-
-### Spacing
-- **Consistent Scale**: xs, sm, md, lg, xl, 2xl, 3xl
-- **Responsive**: Adapts to different screen sizes
+- **Headings**: Inter font with tight tracking for editorial style
+- **Body**: Inter with comfortable line height for readability
+- **Scale**: xs, sm, base, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl
 
 ### Components
-- **Glass Cards**: Transparent backgrounds with blur effects
-- **Buttons**: Primary and secondary styles with hover effects
-- **Icons**: Font Awesome icons throughout the interface
+All components use consistent design tokens and follow accessibility best practices.
 
-## 📱 Responsive Breakpoints
+## 📁 Project Structure
 
-- **Mobile**: < 768px
-- **Tablet**: 768px - 1024px
-- **Desktop**: > 1024px
+```
+src/
+├── app/                    # App Router pages
+│   ├── (marketing)/       # Marketing route group
+│   ├── services/          # Services page
+│   ├── work/             # Portfolio pages
+│   ├── contact/          # Contact page
+│   ├── about/            # About page
+│   ├── legal/            # Legal pages
+│   ├── layout.tsx        # Root layout
+│   ├── page.tsx          # Home page
+│   ├── sitemap.ts        # Dynamic sitemap
+│   └── robots.ts         # Robots.txt
+├── components/
+│   ├── ui/               # Foundational UI components
+│   │   ├── button.tsx
+│   │   ├── card.tsx
+│   │   ├── input.tsx
+│   │   └── ...
+│   ├── layout/           # Layout components
+│   │   ├── header.tsx
+│   │   └── footer.tsx
+│   └── blocks/           # Page sections
+│       ├── hero.tsx
+│       ├── services-grid.tsx
+│       └── testimonials.tsx
+├── content/              # Content data (JSON/MDX)
+├── lib/                  # Utilities and helpers
+│   └── utils.ts
+└── styles/
+    └── globals.css       # Global styles and design tokens
+```
 
-## 🔧 Browser Support
+## 🛠️ Installation & Setup
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+### Prerequisites
+- Node.js 18+ 
+- npm, yarn, or pnpm
 
-## 🚀 Performance Features
+### Quick Start
 
-- **Lazy Loading**: YouTube videos load only when visible
-- **Optimized Animations**: Hardware-accelerated CSS transitions
-- **Minimal JavaScript**: Efficient event handling
-- **CSS Variables**: Easy customization and maintenance
+1. **Clone and install dependencies**
+   ```bash
+   cd hdframes-website
+   npm install
+   ```
 
-## 📧 Contact Form
+2. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-The contact form includes:
-- **Client-side validation**
-- **Success/error notifications**
-- **Form reset after submission**
+3. **Open in browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-To make it functional, you'll need to:
-1. Set up a backend service (PHP, Node.js, etc.)
-2. Configure email sending
-3. Update the form action and method
+### Build for Production
 
-## 🎬 YouTube Integration
+```bash
+# Build the application
+npm run build
 
-The platform supports YouTube video embedding:
-- **Responsive iframes**
-- **Lazy loading** for performance
-- **Custom styling** to match the design
-- **Easy to update** video IDs
+# Start production server
+npm start
 
-## 🔄 Updates and Maintenance
+# Run static export (if needed)
+npm run build && npm run export
+```
 
-### Regular Updates
-- Keep Font Awesome updated for icons
-- Update Google Fonts if needed
-- Test on new browser versions
+## 🎯 Available Scripts
 
-### Content Updates
-- Refresh portfolio videos regularly
-- Update statistics and testimonials
-- Keep contact information current
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run type-check` - Run TypeScript checks
+
+## 🎨 Customizing Design Tokens
+
+### Colors
+Update colors in `src/app/globals.css`:
+
+```css
+:root {
+  /* Update brand colors */
+  --primary: 258 86% 65%;
+  --accent: 288 84% 60%;
+  
+  /* Surface colors for glassmorphism */
+  --surface: 215 25% 8%;
+  --glass: 215 25% 8% / 0.6;
+}
+```
+
+### Typography
+Modify fonts in `src/app/layout.tsx`:
+
+```typescript
+import { Inter, JetBrains_Mono } from "next/font/google";
+
+const fontSans = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+```
+
+### Spacing & Layout
+Update Tailwind config in `tailwind.config.ts`:
+
+```typescript
+theme: {
+  extend: {
+    spacing: {
+      "1": "0.25rem",   // 4px base
+      "2": "0.5rem",    // 8px
+      // ... more spacing tokens
+    }
+  }
+}
+```
+
+## 📝 Content Management
+
+### Adding Services
+Update services in `src/components/blocks/services-grid.tsx`:
+
+```typescript
+const services = [
+  {
+    id: "new-service",
+    title: "New Service",
+    description: "Service description...",
+    icon: ServiceIcon,
+    features: ["Feature 1", "Feature 2"],
+    // ... more properties
+  }
+];
+```
+
+### Testimonials
+Modify testimonials in `src/components/blocks/testimonials.tsx`:
+
+```typescript
+const testimonials = [
+  {
+    id: "1",
+    quote: "Client testimonial...",
+    author: "Client Name",
+    role: "Job Title",
+    company: "Company Name",
+    rating: 5
+  }
+];
+```
+
+### Contact Information
+Update contact details in multiple files:
+- `src/components/layout/footer.tsx` - Footer contact info
+- `src/components/blocks/contact-form.tsx` - Contact form details
+- `src/app/layout.tsx` - Meta contact information
+
+## 🔧 Component Usage
+
+### Using UI Components
+
+```typescript
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+
+<Button variant="primary" size="lg">
+  Get Quote
+</Button>
+
+<Card glass="lg" hover>
+  <CardContent>
+    Your content here
+  </CardContent>
+</Card>
+```
+
+### Creating New Pages
+
+```typescript
+// src/app/new-page/page.tsx
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+
+export const metadata = {
+  title: "Page Title | HDFrames Productions",
+  description: "Page description...",
+};
+
+export default function NewPage() {
+  return (
+    <>
+      <Header />
+      <main id="main-content">
+        {/* Page content */}
+      </main>
+      <Footer />
+    </>
+  );
+}
+```
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+1. Push to GitHub
+2. Connect repository to Vercel
+3. Deploy automatically on push
+
+### Other Platforms
+- **Netlify**: Build command `npm run build`, publish directory `out`
+- **AWS S3**: Use `npm run build && npm run export` for static hosting
+- **Docker**: Dockerfile included for containerized deployment
+
+## 📊 Performance Optimization
+
+- **Images**: Use Next.js Image component with optimization
+- **Fonts**: Google Fonts with `display: swap`
+- **Code Splitting**: Automatic with App Router
+- **Lazy Loading**: Components and images load on demand
+- **Caching**: Optimized cache headers for static assets
+
+## ♿ Accessibility Features
+
+- **Keyboard Navigation**: All interactive elements
+- **Screen Reader Support**: Semantic HTML and ARIA labels
+- **Focus Management**: Visible focus indicators
+- **Color Contrast**: WCAG AA compliant
+- **Reduced Motion**: Respects user preferences
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+1. **Build Errors**: Check TypeScript errors with `npm run type-check`
+2. **Styling Issues**: Verify Tailwind classes and CSS variables
+3. **Image Loading**: Ensure images are in `public/` directory
+4. **Navigation**: Check route files in `src/app/` directory
+
+### Development Tips
+
+- Use TypeScript strict mode for better type safety
+- Follow the established component patterns
+- Test components in isolation
+- Validate HTML for semantic correctness
 
 ## 📄 License
 
-This project is created for HDF Media Production. Feel free to modify and use for your business needs.
+This project is proprietary software for HDFrames Productions. All rights reserved.
 
 ## 🤝 Support
 
-For questions or customization help:
-- Email: info@hdframes.co.uk
-- Website: https://hdframes.co.uk
+For technical support or questions about this website:
+- Email: tech@hdframes.co.uk
+- Internal Documentation: See `/docs` folder
+- Component Storybook: Run `npm run storybook` (if configured)
 
 ---
 
-**Built with ❤️ for HDF Media Production**
+**HDFrames Productions** - Bringing Your Vision to Life in Broadcast-Standard Quality
