@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark theme as default */
+    --background: 215 28% 5%; /* Deep dark blue-black */
+    --foreground: 210 40% 98%; /* Near white with blue tint */
+    
+    /* Primary brand colors - derived from HDFrames logo blue/purple gradient */
+    --primary: 258 86% 65%; /* Purple-blue from logo */
+    --primary-foreground: 210 40% 98%;
+    --primary-50: 258 86% 95%;
+    --primary-100: 258 86% 85%;
+    --primary-600: 258 86% 55%;
+    --primary-700: 258 86% 45%;
+    --primary-900: 258 86% 25%;
+    
+    /* Accent colors - complementary to primary */
+    --accent: 288 84% 60%; /* Magenta-purple */
+    --accent-foreground: 210 40% 98%;
+    --accent-50: 288 84% 95%;
+    --accent-100: 288 84% 85%;
+    --accent-600: 288 84% 50%;
+    --accent-700: 288 84% 40%;
+    --accent-900: 288 84% 20%;
+    
+    /* Surface colors for glass morphism */
+    --surface: 215 25% 8%; /* Slightly lighter than background */
+    --surface-2: 215 20% 12%; /* Card surfaces */
+    --surface-3: 215 18% 16%; /* Elevated surfaces */
+    
+    /* Text and UI colors */
+    --muted: 215 15% 40%; /* Muted text */
+    --muted-foreground: 215 15% 60%; /* Muted text readable */
+    
+    /* Border and outline colors */
+    --border: 215 20% 20%; /* Subtle borders */
+    --ring: 258 86% 65%; /* Focus rings */
+    
+    /* Glass morphism colors */
+    --glass: 215 25% 8%; /* Semi-transparent surface */
+    --glass-border: 210 40% 98%; /* Subtle glass border */
+    
+    /* Status colors */
+    --success: 142 76% 36%; /* Green */
+    --warning: 38 92% 50%; /* Amber */
+    --danger: 0 84% 60%; /* Red */
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Focus styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Disable focus ring for mouse users */
+  .js-focus-visible *:focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground;
+  }
+
+  /* Typography improvements */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-foreground tracking-tight;
+    /* text-wrap: balance; */
+  }
+
+  p {
+    /* text-wrap: pretty; */
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-primary/20 text-primary-foreground;
+  }
+
+  /* Glass morphism utility */
+  .glass {
+    @apply backdrop-blur-md border shadow-glass;
+    background-color: hsl(var(--glass) / 0.6);
+    border-color: hsl(var(--glass-border) / 0.1);
+  }
+
+  .glass-lg {
+    @apply backdrop-blur-lg border shadow-glass-lg;
+    background-color: hsl(var(--glass) / 0.6);
+    border-color: hsl(var(--glass-border) / 0.1);
+  }
+
+  .glass-xl {
+    @apply backdrop-blur-xl border shadow-glass-xl;
+    background-color: hsl(var(--glass) / 0.6);
+    border-color: hsl(var(--glass-border) / 0.1);
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay {
+    position: relative;
+  }
+
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0);
+    background-size: 20px 20px;
+    opacity: 0.03;
+    pointer-events: none;
+  }
+
+  /* Gradient mesh background */
+  .gradient-mesh {
+    background: 
+      radial-gradient(circle at 20% 50%, hsl(var(--primary)) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--accent)) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, hsl(var(--primary-700)) 0%, transparent 50%),
+      hsl(var(--background));
+    background-blend-mode: multiply;
+  }
+
+  /* Skip to content link */
+  .skip-to-content {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50;
+    @apply bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium;
+    @apply transition-all duration-fast;
+  }
+}
+
+@layer components {
+  /* Button variants */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg font-medium transition-all duration-fast;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    @apply disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-sm {
+    @apply h-9 px-3 text-sm;
+  }
+
+  .btn-md {
+    @apply h-10 px-4 py-2;
+  }
+
+  .btn-lg {
+    @apply h-11 px-8 text-lg;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary-600 active:bg-primary-700;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-surface-2 hover:text-foreground;
+  }
+
+  .btn-soft {
+    @apply bg-primary/10 text-primary hover:bg-primary/20;
+  }
+
+  /* Card styles */
+  .card {
+    @apply glass rounded-lg p-6;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-normal hover:shadow-glass-lg hover:border-glass-border/20;
+  }
+
+  /* Container styles */
+  .container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-sm {
+    @apply mx-auto max-w-3xl px-4 sm:px-6;
+  }
+
+  /* Section styles */
+  .section {
+    @apply py-16 lg:py-24;
+  }
+
+  .section-sm {
+    @apply py-12 lg:py-16;
+  }
+
+  /* Glassmorphism navigation */
+  .nav-glass {
+    @apply glass-lg sticky top-0 z-50 border-b border-glass-border/50;
+    backdrop-filter: blur(16px) saturate(180%);
+  }
+}
